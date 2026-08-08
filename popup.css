@@ -1,0 +1,531 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+    width: 380px;
+    background: #090a0f !important; /* Pure Dark Background */
+    color: #f1f5f9;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Seamless Dark App Container */
+.app-container {
+    padding: 16px 18px 18px 18px;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 60%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.06), transparent 60%),
+                #090a0f;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.3s ease;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Main Brand Logo */
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 0 !important;
+    background: transparent !important;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.65));
+    transition: all 0.3s ease;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.2px;
+}
+
+.version-badge {
+    font-size: 9px;
+    font-weight: 800;
+    color: #10b981;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Status Badge Pill */
+.live-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.live-status-pill.active {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.live-status-pill.active .status-dot {
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 2s infinite;
+}
+
+.live-status-pill.active .status-label {
+    color: #10b981;
+}
+
+.live-status-pill.paused {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.live-status-pill.paused .status-dot {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+    animation: pulseRed 1.5s infinite;
+}
+
+.live-status-pill.paused .status-label {
+    color: #ef4444;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.status-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+@keyframes pulseRed {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+/* Main Bypass Control Card */
+.main-card {
+    background: rgba(18, 20, 29, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.main-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.main-card.paused {
+    border-color: rgba(239, 68, 68, 0.28);
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.control-text h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.control-text h2.paused {
+    color: #ef4444;
+}
+
+.control-desc {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* iOS Style Glowing Switch */
+.switch {
+    position: relative;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-radius: 26px;
+    cursor: pointer;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.45);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+input:checked + .slider {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.5);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+    background: #ffffff;
+}
+
+/* Refresh Hint */
+.refresh-hint {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgba(229, 9, 20, 0.12);
+    border: 1px solid rgba(229, 9, 20, 0.3);
+    border-radius: 12px;
+    font-size: 11px;
+    color: #ff4d4d;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.refresh-hint.show {
+    display: flex;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Search Bar Section (Collapsible / Expandable) */
+.search-section {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(18, 20, 29, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.search-section.active {
+    display: flex;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.search-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #090a0f;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+}
+
+.search-bar-wrap:focus-within {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.12);
+}
+
+.search-icon {
+    color: #94a3b8;
+    flex-shrink: 0;
+}
+
+#custom-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#custom-search-input::placeholder {
+    color: #64748b;
+}
+
+/* Go Button Styling */
+#btn-go-search {
+    background: rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-go-search:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-suggestions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding-top: 2px;
+}
+
+/* Suggestion Tags Neutral Dark Glass Style */
+.tag {
+    font-size: 9px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Quick Launch Platforms Section */
+.platforms-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-header h3 {
+    font-size: 12px;
+    font-weight: 800;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* Platform Grid (Clean Floating 3D Icons Grid) */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.platform-card {
+    background: transparent !important;
+    border: none !important;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.platform-card:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.platform-card:active {
+    transform: translateY(-1px) scale(0.96);
+}
+
+/* ULTRA-HD CRISP 3D ICON WRAPPER */
+.platform-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    overflow: hidden;
+    transition: all 0.22s ease;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+.brand-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    border-radius: 16px;
+    transform: none !important;
+    transition: transform 0.2s ease;
+}
+
+.platform-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    transition: color 0.2s ease;
+}
+
+.platform-card:hover .platform-name {
+    color: #ffffff;
+}
+
+/* Dual-Color Gradient Glow Effect for JioHotstar: Blue Top & Pinkish Bottom */
+.platform-card.hotstar:hover .platform-icon-wrap {
+    filter: drop-shadow(0 -6px 14px rgba(59, 130, 246, 0.65)) drop-shadow(0 8px 16px rgba(217, 70, 239, 0.65));
+}
+
+.platform-card.netflix:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(229, 9, 20, 0.6));
+}
+
+.platform-card.prime:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(0, 168, 225, 0.55));
+}
+
+.platform-card.appletv:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.5));
+}
+
+.platform-card.zee5:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.45));
+}
+
+.platform-card.crunchyroll:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(255, 107, 0, 0.55));
+}
+
+.platform-card.disneyhotstar:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(15, 82, 186, 0.6));
+}
+
+/* Neutral Grey/White Glass Glow for Others Icon */
+.platform-card.others:hover .platform-icon-wrap {
+    filter: drop-shadow(0 8px 18px rgba(255, 255, 255, 0.45));
+}
+
+/* Footer */
+.app-footer {
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* Discord Icon Dedicated Button Hover Effect (Icon Only) */
+.discord-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    text-decoration: none;
+    padding: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.discord-icon-link svg {
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.discord-icon-link:hover {
+    color: #5865F2;
+    filter: drop-shadow(0 0 6px rgba(88, 101, 242, 0.7));
+}
+
+.discord-icon-link:hover svg {
+    transform: scale(1.18);
+}
