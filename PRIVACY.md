@@ -48,7 +48,7 @@ If we make changes to this privacy policy, we will update the "Last Updated" dat
 ## Contact
 
 If you have questions about this privacy policy, please contact:
-- GitHub: https://github.com/npapoutsakis/netflix-screenshare-fix
+- GitHub: https://github.com/munishhhh/Brothers-Regedit-DRM-Bypass
 
 ## Your Consent
 
