@@ -108,8 +108,3 @@ For technical support, feature requests, or community updates:
 - **Instagram:** [@brothersregedit](https://instagram.com/brothersregedit)
 - **GitHub Repository:** [Brothers Regedit DRM Bypass](https://github.com/npapoutsakis/netflix-screenshare-fix)
 
----
-
-## License
-
-Distributed under the MIT License. See [LICENSE](LICENSE) for details.
