@@ -73,7 +73,7 @@ This extension intercepts HTML5 `<video>` elements across all frames and Shadow 
 
 1. Download or clone this repository to your local machine:
    ```bash
-   git clone https://github.com/npapoutsakis/netflix-screenshare-fix.git
+   git clone https://github.com/munishhhh/Brothers-Regedit-DRM-Bypass
    ```
 2. Open Google Chrome or any Chromium-based browser (Brave, Edge, Opera).
 3. Navigate to `chrome://extensions` in your address bar.
