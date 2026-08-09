@@ -24,12 +24,8 @@ Used to inject CSS styling into supported streaming pages to fix the black scree
 ### activeTab
 Allows the extension to interact with the active streaming tab when you click the extension icon.
 
-### declarativeContent
-Enables the extension to show its icon only when you're on supported domains (`hotstar.com`, `jiohotstar.com`, `jiocinema.com`, `netflix.com`).
-
 ### host_permissions
-Required to access supported streaming pages and apply the CSS fix. Limited strictly to target domains only.
-
+Required to access supported streaming pages and apply the CSS fix.
 ## Local Storage
 
 The extension uses browser localStorage to remember your on/off preference. This data:
