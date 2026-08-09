@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/npapoutsakis/netflix-screenshare-fix">GitHub</a> &bull;
+  <a href="https://github.com/munishhhh/Brothers-Regedit-DRM-Bypass">GitHub</a> &bull;
   <a href="https://discord.gg/Qtj8wHjF6Z">Discord Server</a> &bull;
   <a href="https://instagram.com/brothersregedit">Instagram</a>
 </p>
